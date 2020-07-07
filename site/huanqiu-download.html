@@ -13,7 +13,11 @@
     <script>
 
       setTimeout(() => {
-          location.href = 'https://apk.1sapp.com/qukan.3.9.84.000.0622.1637001.617.apk'
+
+        var ua = navigator.userAgent.toLowerCase();
+
+          var url = ua.indexOf('iphone') !== -1 ? 'https://apps.apple.com/cn/app/%E5%BF%AB%E6%89%8B/id440948110' : 'https://apk.1sapp.com/qukan.3.9.84.000.0622.1637001.617.apk';
+          location.href = url
         }, 1000)
 
     </script>
