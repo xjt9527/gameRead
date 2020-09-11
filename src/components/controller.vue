@@ -1,7 +1,5 @@
 <template>
-  <div class="controller">
-    <h1>hello {{count}}</h1>
-  </div>
+  <div class="controller"></div>
 </template>
 
 <script>
@@ -10,7 +8,7 @@ export default {
   name: "controller",
   data() {
     return {
-      count: 12
+      count: 12,
     };
   },
   mounted() {
@@ -18,7 +16,7 @@ export default {
   },
   created() {
     console.log(story);
-  }
+  },
 };
 </script>
 
