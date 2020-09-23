@@ -1,25 +1,28 @@
 <template>
   <div id="app">
-    <controller />
+    <Controller />
     <Aside :txtData="gameData.aside.a1"></Aside>
   </div>
 </template>
 
 <script>
-import controller from "./components/controller.vue";
+import Controller from "./components/Controller";
 import Aside from "./components/Aside";
 import gameData from "@/assets/script/story";
 
 export default {
   name: "App",
   components: {
-    controller,
+    Controller,
     Aside,
   },
   data() {
     return {
       gameData,
     };
+  },
+  created() {
+    console.log(this.gameData);
   },
 };
 </script>
