@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <Controller />
-    <Aside :txtData="gameData.aside.a1"></Aside>
+    <!-- <Aside :txtData="gameData.aside.a1"></Aside> -->
+    <Aside-type2 :txtData="gameData.aside.a1" />
   </div>
 </template>
 
 <script>
 import Controller from "./components/Controller";
-import Aside from "./components/Aside";
+// import Aside from "./components/Aside";
+import AsideType2 from "./components/AsideType2";
 import gameData from "@/assets/script/story";
 
 export default {
   name: "App",
   components: {
     Controller,
-    Aside,
+    // Aside,
+    AsideType2,
   },
   data() {
     return {
