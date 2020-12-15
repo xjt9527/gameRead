@@ -19,3 +19,35 @@ h6 {
   font-size: 100%;
   margin: 0;
 }
+
+
+.scroll {
+  scroll-behavior: smooth;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.shake{
+  display:inline-block;
+  animation: shake .6s infinite linear;
+}
+
+.red{
+  color:#c00;
+}
+
+@keyframes shake{
+  0%{
+    transform: rotate(4deg);
+  }
+  20%{
+    transform: rotate(-4deg);
+  }
+  40%{
+    transform: rotate(4deg);
+  }
+
+}

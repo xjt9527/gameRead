@@ -1,52 +1,66 @@
 <template>
   <div id="app">
-    <!-- <Controller /> -->
-    <!-- <Aside :txtData="gameData.aside.a1"></Aside> -->
-    <!-- <Aside-type2 :txtData="gameData.aside.a1" /> -->
-    <Dialog />
+    <top-head />
+    <stage-show />
+    <div class="actor-box">
+      <div class="oactor show"></div>
+      <div class="oactor"></div>
+    </div>
+    <bottom-act />
   </div>
 </template>
 
 <script>
-import Controller from "./components/Controller";
-// import Aside from "./components/Aside";
-// import AsideType2 from "./components/AsideType2";
-import Dialog from "./components/Dialog";
-import gameData from "@/assets/script/story";
+import gameData from "@/scriptData/story";
+import TopHead from "./components/TopHead";
+import stageShow from "./components/stage-show";
+import BottomAct from "./components/BottomAct";
 
 export default {
   name: "App",
-  components: {
-    // Controller,
-    // Aside,
-    // AsideType2,
-    Dialog,
-  },
+  components: { TopHead, stageShow, BottomAct },
   data() {
     return {
       gameData,
     };
   },
-  created() {
-    console.log(this.gameData);
-  },
+  created() {},
 };
 </script>
 
 <style lang="less">
 @import "./assets/css/base.less";
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #224;
-  font-size: 28px;
+  height: 100%;
 }
+
 body {
-  background: #667;
+  background: #242428;
+  color: #ccc;
+  width: 750px;
+  margin: 0 auto;
+  position: relative;
 }
-ul,
-li {
-  list-style: none;
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.actor-box {
+  position: absolute;
+  width: 100%;
+  height: 420px;
+  bottom: 0;
+  left: 0;
+  .oactor {
+    position: absolute;
+    width: 280px;
+    height: 400px;
+    background: #88888a;
+    left: 60px;
+  }
 }
 </style>
