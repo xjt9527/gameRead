@@ -1,16 +1,13 @@
 <template>
-  <div class="stage-show" @click="add">
+  <div class="stage-show">
     <div class="main scroll" ref="box">
       <div class="inner" ref="inbox">
         <div class="bk"></div>
         <div class="text-box">
           <template v-for="(item, index) in t">
-            <div
-              class="ocell"
-              v-if="!item.type"
-              v-html="item"
-              :key="index"
-            ></div>
+            <div class="ocell" v-if="item.type === 'aside'" :key="index">
+              {{ item.txt }}
+            </div>
             <div
               class="ocell odlg"
               :class="item.pos"
@@ -32,21 +29,20 @@ export default {
   props: { txtData: Array },
   data() {
     return {
-      t: [
-        "此前台媒援引《纽约时报》报道称，<span class='shake red'>美</span>国环保署长惠勒计划12月率团访台，推动海洋保护合作。惠勒如果成行，将是继美国卫生部长阿扎、美国副国务卿克拉奇后，四个月内第三位访台的美国内阁官员。",
-      ],
+      t: [],
+      testS: true,
     };
   },
   computed: {},
   methods: {
-    add() {
-      let dlg = {
-        type: "dlg",
-        txt: "asdfas暗示法撒旦阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬",
-        pos: "right",
-      };
-      this.t.push(dlg);
-      this.scrollBottom();
+    add(dlg) {
+      setTimeout(
+        () => {
+          this.t.push(dlg);
+          this.scrollBottom();
+        },
+        dlg.type === "aside" ? 0 : 200
+      );
     },
     scrollBottom() {
       this.$nextTick(() => {
@@ -55,9 +51,7 @@ export default {
       });
     },
   },
-  mounted() {
-    this.scrollBottom();
-  },
+  mounted() {},
 };
 </script>
 
@@ -86,24 +80,30 @@ export default {
     margin-bottom: 40px;
     letter-spacing: 1px;
     transform-origin: left center;
-    animation: preview 0.4s both;
+    animation: preview 0.2s both;
 
     &:last-child {
-      animation: showlast 1s;
+      animation: showlast 0.8s;
       padding-bottom: 340px;
     }
 
     &.odlg {
       .txt {
-        background: #444;
+        background: #555558;
         display: inline-block;
         max-width: 80%;
+        color: #fff;
         padding: 30px;
         border-radius: 30px;
         text-align: left;
       }
       &.right {
         text-align: right;
+        transform-origin: right center;
+      }
+      &.left {
+        text-align: left;
+        transform-origin: left center;
       }
     }
   }

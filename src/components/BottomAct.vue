@@ -19,11 +19,11 @@ export default {
 
 <style lang="less" scoped>
 .bottomAct-box {
-  background: #242428;
+  background: #334;
   padding: 15px 40px;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0 60px 20px #242428;
+  box-shadow: 0 0 60px 20px #334;
   h3 {
     font-size: 20px;
     color: #666567;
@@ -32,7 +32,7 @@ export default {
     font-size: 20px;
     transform-origin: left center;
     transform: scale(0.8);
-    color: #666567;
+    color: #888;
   }
 }
 </style>
