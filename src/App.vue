@@ -122,10 +122,15 @@ body,
   height: 100%;
 }
 
+html,
+body {
+  overflow: hidden;
+}
+
 body {
   background: #334;
   color: #ccc;
-  width: 750px;
+  width: 750 * @rem;
   margin: 0 auto;
   position: relative;
 }

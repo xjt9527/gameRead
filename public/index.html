@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <script>
+    (function pageInit() {
+      window.isLandscape = false;
+      var mql = window.matchMedia ? window.matchMedia('(orientation: landscape)') : null;
+      if (mql) {
+        mql.addListener(function matchMedia() {
+          refreshRem();
+          console.warn(
+            'matchMedia',
+            window.innerWidth,
+            window.innerHeight,
+            document.documentElement.clientWidth,
+            document.documentElement.clientHeight
+          );
+        });
+      }
+      function refreshRem() {
+        var remHacker = document.getElementById('rem-bug-fix-dom');
+        var fixRadio = 1;
+        if (remHacker && typeof remHacker.getBoundingClientRect === 'function') {
+          var fontSize = parseFloat(document.documentElement.style.fontSize.replace('px', ''));
+          fixRadio = fontSize / remHacker.getBoundingClientRect().width;
+        }
+        var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+        var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+        window.isLandscape = mql ? mql.matches : clientWidth > clientHeight;
+        var remWidth = window.isLandscape ? clientHeight : clientWidth;
+        var fontSize = (remWidth / 375) * 20 * fixRadio;
+        document.documentElement.style.fontSize = fontSize + 'px';
+
+        console.warn(
+          'refreshRem',
+          window.innerWidth,
+          window.innerHeight,
+          document.documentElement.clientWidth,
+          document.documentElement.clientHeight
+        );
+      }
+
+      refreshRem();
+      var tid = null;
+      window.addEventListener(
+        'resize',
+        function () {
+          console.warn(
+            'resize',
+            window.innerWidth,
+            window.innerHeight,
+            document.documentElement.clientWidth,
+            document.documentElement.clientHeight
+          );
+          clearTimeout(tid);
+          tid = setTimeout(refreshRem, 300);
+        },
+        false
+      );
+
+      window.addEventListener('load', function () {
+        refreshRem();
+      });
+    })();
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

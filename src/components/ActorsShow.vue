@@ -33,23 +33,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem: 0.05rem;
 .actors-box {
   position: absolute;
-  width: 100%;
-  height: 420px;
+  width: 375 * @rem;
+  height: 200 * @rem;
   bottom: 0;
   left: 0;
   .oactor {
     position: absolute;
-    width: 260px;
-    height: 400px;
+    width: 130 * @rem;
+    height: 200 * @rem;
     &.left {
-      left: 20px;
+      left: 20 * @rem;
       transform-origin: left bottom;
     }
     &.right {
       transform-origin: right bottom;
-      right: 20px;
+      right: 20 * @rem;
     }
     &.talk {
       animation: cur 0.4s both;
@@ -67,9 +68,8 @@ export default {
     }
 
     .mode {
-      width: 260px;
-      height: 400px;
-
+      width: 130 * @rem;
+      height: 200 * @rem;
       background-size: 100% auto;
       background-position: center bottom;
       background-repeat: no-repeat;
@@ -86,7 +86,7 @@ export default {
 @keyframes in {
   0% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20 * @rem);
   }
   100% {
     opacity: 1;
@@ -122,7 +122,7 @@ export default {
   }
   100% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20 * @rem);
   }
 }
 </style>

@@ -56,45 +56,46 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem: 0.05rem;
 .stage-show {
   flex: 1;
-  width: 750px;
+  width: 375 * @rem;
   overflow: hidden;
   .main {
     box-sizing: border-box;
-    padding: 40px;
-    width: 780px;
-    padding-right: 80px;
+    padding: 20 * @rem;
+    width: 400 * @rem;
+    padding-right: 45 * @rem;
     height: 100%;
     overflow: auto;
 
     .bk {
-      height: 1000px;
+      height: 400 * @rem;
     }
   }
 }
 .text-box {
-  font-size: 20px;
+  font-size: 12 * @rem;
   .ocell {
-    line-height: 2;
-    margin-bottom: 40px;
-    letter-spacing: 1px;
+    line-height: 1.75;
+    margin-bottom: 15 * @rem;
+    letter-spacing: 1 * @rem;
     transform-origin: left center;
     animation: preview 0.2s both;
 
     &:last-child {
       animation: showlast 0.8s;
-      padding-bottom: 340px;
+      padding-bottom: 150 * @rem;
     }
 
     &.odlg {
       .txt {
         background: #555558;
         display: inline-block;
-        max-width: 80%;
+        max-width: 240 * @rem;
         color: #fff;
-        padding: 30px;
-        border-radius: 30px;
+        padding: 10 * @rem 12 * @rem;
+        border-radius: 10 * @rem;
         text-align: left;
       }
       &.right {
@@ -122,7 +123,7 @@ export default {
 @keyframes showlast {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(10 * @rem);
   }
   100% {
     opacity: 1;

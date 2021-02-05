@@ -18,18 +18,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem: 0.05rem;
 .bottomAct-box {
   background: #334;
-  padding: 15px 40px;
+  padding: 6 * @rem 20 * @rem;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0 60px 20px #334;
+  box-shadow: 0 0 30 * @rem 10 * @rem #334;
   h3 {
-    font-size: 20px;
+    font-size: 10 * @rem;
     color: #666567;
   }
   h4 {
-    font-size: 20px;
+    font-size: 12 * @rem;
     transform-origin: left center;
     transform: scale(0.8);
     color: #888;
