@@ -115,7 +115,7 @@ export default {
     margin-bottom: 15 * @rem;
     letter-spacing: 1 * @rem;
     transform-origin: left center;
-    animation: preview 0.2s both;
+    animation: preview 0.3s both;
 
     &:last-child {
       animation: showlast 0.8s;
@@ -150,8 +150,8 @@ export default {
     transform: scale(1);
   }
   100% {
-    opacity: 0.4;
-    transform: scale(0.9);
+    opacity: 0.5;
+    transform: scale(0.95);
   }
 }
 @keyframes showlast {

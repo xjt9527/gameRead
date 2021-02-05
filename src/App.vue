@@ -44,14 +44,7 @@ export default {
         "1": {
           type: "aside",
           auto: true,
-          txt: [
-            "我听有人说^^1.5",
-            "太阳升起前，如果你面朝夜晚^^2.5",
-            "你会看到你的影子生长^^2",
-            "我听有人说^^1.5",
-            "太阳升起前，如果你面朝夜晚^^2.5",
-            "你会看到你的影子生长^^2",
-          ],
+          txt: ["我听有人说^^1.5", "太阳升起前，如果你面朝夜晚^^2.5"],
         },
         "2": {
           type: "aside",
@@ -90,14 +83,14 @@ export default {
       asideIndex: 0,
       script: [
         { dlgs: 1 },
-        { dlgs: 2 },
-        { dlgs: 3 },
-        { dlgs: 4 },
-        { actors: 1, dlgs: 8 },
-        { actors: 2, dlgs: 5 },
-        { actors: 3, dlgs: 6 },
-        { actors: 4, dlgs: 7 },
-        { actors: 5, dlgs: 6 },
+        { dlgs: 2, next: true, stay: 0.5 },
+        { dlgs: 3, next: true, stay: 1 },
+        { dlgs: 4, next: true, stay: 1.2 },
+        { actors: 1, dlgs: 8, next: true, stay: 0.5 },
+        { actors: 2, dlgs: 5, next: true, stay: 1.5 },
+        { actors: 3, dlgs: 6, next: true, stay: 1.5 },
+        { actors: 4, dlgs: 7, next: true, stay: 1.5 },
+        { actors: 5, dlgs: 6, next: true, stay: 1.5 },
         { actors: 6, dlgs: 7 },
       ],
       actData: null,
@@ -116,6 +109,11 @@ export default {
         } else if (key === "actors") {
           this.$refs.actorbox.change(this.actors[curS[key]]);
         }
+      }
+      if (curS.next) {
+        setTimeout(() => {
+          this.go();
+        }, curS.stay * 1000);
       }
       this.scriptIndex++;
     },
