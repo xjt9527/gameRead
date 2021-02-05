@@ -24,7 +24,7 @@ export default {
   padding: 6 * @rem 20 * @rem;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0 30 * @rem 10 * @rem #334;
+  box-shadow: 0 0 30 * @rem 10 * @rem #223;
   h3 {
     font-size: 10 * @rem;
     color: #666567;

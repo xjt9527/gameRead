@@ -1,6 +1,6 @@
 <template>
   <div class="topHead-box">
-    <h3>《书名》</h3>
+    <h3>【书名】</h3>
     <h4>第一章 章节名</h4>
   </div>
 </template>

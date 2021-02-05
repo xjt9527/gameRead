@@ -1,7 +1,7 @@
 <template>
   <div id="app" @click="go">
     <top-head />
-    <stage-show ref="stagebox" />
+    <stage-show ref="stagebox" @changeAct="changeActLock" />
     <actors-show ref="actorbox" />
     <bottom-act />
   </div>
@@ -43,7 +43,15 @@ export default {
       dlgs: {
         "1": {
           type: "aside",
-          txt: "还有救么",
+          auto: true,
+          txt: [
+            "我听有人说^^1.5",
+            "太阳升起前，如果你面朝夜晚^^2.5",
+            "你会看到你的影子生长^^2",
+            "我听有人说^^1.5",
+            "太阳升起前，如果你面朝夜晚^^2.5",
+            "你会看到你的影子生长^^2",
+          ],
         },
         "2": {
           type: "aside",
@@ -72,14 +80,20 @@ export default {
           txt: "asdfasdfasdf阿斯蒂芬",
           pos: "left",
         },
+        "8": {
+          type: "dlg",
+          txt: "...",
+          pos: "left",
+        },
       },
       scriptIndex: 0,
+      asideIndex: 0,
       script: [
         { dlgs: 1 },
         { dlgs: 2 },
         { dlgs: 3 },
         { dlgs: 4 },
-        { actors: 1 },
+        { actors: 1, dlgs: 8 },
         { actors: 2, dlgs: 5 },
         { actors: 3, dlgs: 6 },
         { actors: 4, dlgs: 7 },
@@ -87,10 +101,14 @@ export default {
         { actors: 6, dlgs: 7 },
       ],
       actData: null,
+      canAct: true,
     };
   },
   methods: {
     go() {
+      if (!this.canAct) {
+        return;
+      }
       let curS = this.script[this.scriptIndex];
       for (let key in curS) {
         if (key === "dlgs") {
@@ -99,11 +117,10 @@ export default {
           this.$refs.actorbox.change(this.actors[curS[key]]);
         }
       }
-
       this.scriptIndex++;
-
-      // this.$refs.stagebox.add();
-      // this.$refs.actorbox.change(this.actData);
+    },
+    changeActLock(type) {
+      this.canAct = type;
     },
     creatActData() {
       this.actData = this.actors[this.actIndex];

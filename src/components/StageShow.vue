@@ -36,13 +36,46 @@ export default {
   computed: {},
   methods: {
     add(dlg) {
+      if (dlg.auto && dlg.type === "aside") {
+        this.autoPlay(dlg);
+        return;
+      }
       setTimeout(
         () => {
-          this.t.push(dlg);
-          this.scrollBottom();
+          this.playTxt(dlg);
         },
         dlg.type === "aside" ? 0 : 200
       );
+    },
+    autoPlay(data) {
+      let list = data.txt;
+      let tl = list.length;
+      let idn = 0;
+      this.$emit("changeAct", false);
+
+      let auto = () => {
+        let curD = list[idn];
+        let arr = curD.split("^^");
+        this.playTxt({
+          type: "aside",
+          txt: arr[0],
+        });
+        idn++;
+
+        if (idn === tl) {
+          this.$emit("changeAct", true);
+          return;
+        }
+        setTimeout(() => {
+          auto();
+        }, arr[1] * 1000 || 1000);
+      };
+
+      auto();
+    },
+    playTxt(dlg) {
+      this.t.push(dlg);
+      this.scrollBottom();
     },
     scrollBottom() {
       this.$nextTick(() => {
