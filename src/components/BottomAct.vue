@@ -20,7 +20,7 @@ export default {
 <style lang="less" scoped>
 @rem: 0.05rem;
 .bottomAct-box {
-  background: #334;
+  background: #223;
   padding: 6 * @rem 20 * @rem;
   position: relative;
   z-index: 10;

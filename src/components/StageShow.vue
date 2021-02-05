@@ -64,10 +64,11 @@ export default {
   .main {
     box-sizing: border-box;
     padding: 20 * @rem;
-    width: 400 * @rem;
     padding-right: 45 * @rem;
     height: 100%;
-    overflow: auto;
+    width: 400 * @rem;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .bk {
       height: 400 * @rem;

@@ -21,11 +21,11 @@ export default {
 <style lang="less" scoped>
 @rem: 0.05rem;
 .topHead-box {
-  background: #334;
+  background: #223;
   padding: 8 * @rem 20 * @rem;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0 30 * @rem 10 * @rem #334;
+  box-shadow: 0 0 30 * @rem 10 * @rem #223;
   display: flex;
   align-items: center;
   color: #888;

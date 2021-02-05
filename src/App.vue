@@ -120,17 +120,14 @@ html,
 body,
 #app {
   height: 100%;
-}
-
-html,
-body {
+  width: 375 * @rem;
   overflow: hidden;
 }
 
 body {
-  background: #334;
+  background: #223;
   color: #ccc;
-  width: 750 * @rem;
+  width: 375 * @rem;
   margin: 0 auto;
   position: relative;
 }
