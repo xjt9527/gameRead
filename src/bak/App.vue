@@ -100,7 +100,7 @@ export default {
   methods: {
     go() {
       if (!this.canAct) {
-        return;
+        return "1234567ddddd";
       }
       let curS = this.script[this.scriptIndex];
       for (let key in curS) {
