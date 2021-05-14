@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import gameData from "@/scriptData/story";
+import gameData from "./scriptData/story";
 import TopHead from "./components/TopHead";
 import StageShow from "./components/StageShow";
 import BottomAct from "./components/BottomAct";
@@ -83,14 +83,14 @@ export default {
       asideIndex: 0,
       script: [
         { dlgs: 1 },
-        { dlgs: 2, next: true, stay: 0.5 },
-        { dlgs: 3, next: true, stay: 1 },
-        { dlgs: 4, next: true, stay: 1.2 },
-        { actors: 1, dlgs: 8, next: true, stay: 0.5 },
-        { actors: 2, dlgs: 5, next: true, stay: 1.5 },
-        { actors: 3, dlgs: 6, next: true, stay: 1.5 },
-        { actors: 4, dlgs: 7, next: true, stay: 1.5 },
-        { actors: 5, dlgs: 6, next: true, stay: 1.5 },
+        { dlgs: 2, stay: 1 },
+        { dlgs: 3, stay: 1.5 },
+        { dlgs: 4, stay: 2 },
+        { actors: 1, dlgs: 8, stay: 2 },
+        { actors: 2, dlgs: 5, stay: 2.5 },
+        { actors: 3, dlgs: 6, stay: 2.5 },
+        { actors: 4, dlgs: 7, stay: 2.5 },
+        { actors: 5, dlgs: 6, stay: 2.5 },
         { actors: 6, dlgs: 7 },
       ],
       actData: null,
@@ -130,7 +130,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "./assets/css/base.less";
+@import "../assets/css/base.less";
 html,
 body,
 #app {
@@ -140,8 +140,8 @@ body,
 }
 
 body {
-  background: #223;
-  color: #ccc;
+  background: #fefefe;
+  color: #333;
   width: 375 * @rem;
   margin: 0 auto;
   position: relative;

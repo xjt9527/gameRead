@@ -1,6 +1,6 @@
 <template>
   <div class="stage-show">
-    <div class="main scroll" ref="box">
+    <div class="main" ref="box">
       <div class="inner" ref="inbox">
         <div class="bk"></div>
         <div class="text-box">
@@ -29,6 +29,7 @@ export default {
   props: { txtData: Array },
   data() {
     return {
+      h: 0,
       t: [],
       testS: true,
     };
@@ -44,7 +45,7 @@ export default {
         () => {
           this.playTxt(dlg);
         },
-        dlg.type === "aside" ? 0 : 200
+        dlg.type === "aside" ? 0 : 100
       );
     },
     autoPlay(data) {
@@ -80,11 +81,17 @@ export default {
     scrollBottom() {
       this.$nextTick(() => {
         let sh = this.$refs.inbox.clientHeight;
-        this.$refs.box.scrollTo(0, sh);
+        let b = parseInt(this.h - sh);
+        if (b < 0) {
+          this.$refs.inbox.style = `transform:translateY(${b}px)`;
+        }
       });
     },
   },
-  mounted() {},
+  mounted() {
+    let x = document.querySelector(".main").getBoundingClientRect();
+    this.h = x.height;
+  },
 };
 </script>
 
@@ -100,12 +107,16 @@ export default {
     padding-right: 45 * @rem;
     height: 100%;
     width: 400 * @rem;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 
     .bk {
-      height: 400 * @rem;
+      height: 300 * @rem;
     }
+  }
+
+  .inner {
+    transition: transform 0.5s;
+    transform-origin: left center;
   }
 }
 .text-box {
@@ -115,10 +126,10 @@ export default {
     margin-bottom: 15 * @rem;
     letter-spacing: 1 * @rem;
     transform-origin: left center;
-    animation: preview 0.3s both;
+    animation: preview 0.2s both;
 
     &:last-child {
-      animation: showlast 0.8s;
+      animation: showlast 0.5s;
       padding-bottom: 150 * @rem;
     }
 
@@ -147,21 +158,17 @@ export default {
 @keyframes preview {
   0% {
     opacity: 1;
-    transform: scale(1);
   }
   100% {
     opacity: 0.5;
-    transform: scale(0.95);
   }
 }
 @keyframes showlast {
   0% {
     opacity: 0;
-    transform: translateY(10 * @rem);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

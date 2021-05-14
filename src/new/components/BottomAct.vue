@@ -20,11 +20,12 @@ export default {
 <style lang="less" scoped>
 @rem: 0.05rem;
 .bottomAct-box {
-  background: #223;
+  background: #fefefe;
+  height: 100 * @rem;
   padding: 6 * @rem 20 * @rem;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0 30 * @rem 10 * @rem #223;
+  box-shadow: 0 0 30 * @rem 10 * @rem #fefefe;
   h3 {
     font-size: 10 * @rem;
     color: #666567;

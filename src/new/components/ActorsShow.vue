@@ -38,8 +38,9 @@ export default {
   position: absolute;
   width: 375 * @rem;
   height: 200 * @rem;
-  bottom: 0;
+  bottom: 10 * @rem;
   left: 0;
+  z-index: 15;
   .oactor {
     position: absolute;
     width: 130 * @rem;
@@ -74,10 +75,10 @@ export default {
       background-position: center bottom;
       background-repeat: no-repeat;
       &.act-1 {
-        background-image: url(../assets/img/pic-p1-2.png);
+        background-image: url(../../assets/img/pic-p1-2.png);
       }
       &.act-2 {
-        background-image: url(../assets/img/pic-p2-1.png);
+        background-image: url(../../assets/img/pic-p2-1.png);
       }
     }
   }
